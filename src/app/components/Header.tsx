@@ -1,10 +1,21 @@
+'use client'
+import { getPosts } from '@/dummy_api/dummy_api';
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { HiSearch } from 'react-icons/hi'
 
 
-function Header() {
- 
+ function Header() {
+
+
+
+  useEffect( ()  => {
+
+    getPosts().then((response:any) => console.log("response", response.data))
+
+  });
+
+
 
   return (
     <div className="flex gap-3 md:gap-2 items-center p-6">
