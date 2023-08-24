@@ -1,11 +1,18 @@
 import Image from 'next/image'
 import React from 'react'
-import UserTag from './userTag'
+import { useRouter } from 'next/navigation'
+import UserTag from './UserTag';
+
 
 
 function Post({ post }: any) {
+  const router = useRouter();
 
 
+  function detailsPost() {
+    router.push('/post-details')
+    localStorage.setItem("details", JSON.stringify(post));
+  }
 
   return (
     <>
@@ -17,22 +24,27 @@ function Post({ post }: any) {
        hover:before:bg-gray-600 
        before:opacity-50
        cursor-pointer
-       " >
+       "
+        onClick={() => detailsPost()}
+      >
 
         <Image src={post?.image}
           alt={post?.text}
           width={500}
           height={500}
           className='rounded-3xl 
-        cursor-pointer relative z-0  mb-2'
-        onChange={() => console.log("teste",true)}
-        onMouseLeave={() => console.log("teste",false)}
+        cursor-pointer relative z-0  mb-2 '
         />
 
-      </div>
-      <UserTag owner={post?.owner} />
 
-      <p className='font-bold text-[12px] mb-1 mt-2 line-clamp-2'>{post?.text}</p>
+        <div className='p-2'>
+          <UserTag owner={post?.owner} />
+
+          <p className='font-bold text-[12px] mt-2'>{post?.text}</p>
+        </div>
+
+      </div>
+
     </>
   )
 }

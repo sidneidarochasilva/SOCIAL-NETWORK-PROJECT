@@ -2,7 +2,6 @@
 'use client'
 import Header from './components/Header'
 import React, { useEffect, useState } from 'react';
-
 import { getPosts } from '@/dummy_api/dummy_api';
 import ListPost from './components/ListPost';
 
@@ -24,14 +23,13 @@ export default function Home() {
 
 
 
-  const handleFilteredList = (filterList: any) => {
+  const handleFilteredList = (filterList: []) => {
 
     if (filterList.length === 0) {
       setPostagens(tempList);
       return
     }
     setPostagens(filterList);
-
   };
 
   return (

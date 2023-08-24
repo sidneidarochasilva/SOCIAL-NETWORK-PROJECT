@@ -1,9 +1,9 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Post from './Post';
 
 
-function ListPost(props: any) {
+function ListPost({ posts }: any) {
 
 
   return (
@@ -11,10 +11,12 @@ function ListPost(props: any) {
     columns-2 md:columns-3
     lg:columns-4 mb-4
     xl:columns-5 space-y-6 mx-auto'>
-      {props.posts.data && props.posts.data.map((item: any, index: any) => (
+
+      {posts ? posts.map((item: IPost, index: number) => (
 
         <Post post={item} key={index} />
-      ))}
+
+      )) : <>Carregando...</>}
     </div>
   )
 }
