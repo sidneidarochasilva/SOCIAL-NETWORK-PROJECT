@@ -27,7 +27,7 @@ function Header({ posts, onFiltered }: any) {
         <HiSearch className='text-[25px] text-gray-500' />
       
         <input type='text' placeholder='Search'
-          className='bg-transparent outline-none '
+          className='bg-transparent outline-none w-full'
           
           onChange={e => {
             handleSearch(e.target.value);
